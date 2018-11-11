@@ -12,12 +12,12 @@
 
 char webpage[] =
 "HTTP/1.1 200 OK\r\n"
-"Content-Type: text/html; charset=UTF-8\r]n\r\n"
+"Content-Type: text/html; charset=UTF-8\r\n\r\n"
 "<!DOCTYPE html>\r\n"
 "<html><head><title>ShellWaveX</title>\r\n"
 "<style>body { background-clor:#FFFF00 } </style></head>\r\n"
-"<body><center><h1>Hello world!</h1><br>\r\n"
-"<img src=\"doctest.jpg\"></center></body></html>\r\n";
+"<body><center><h1>Hello world! and u</h1><br>\r\n"
+"<img src=\"morty.jpeg\"></center></body></html>\r\n";
 
 int main (int argc, char *argv[])
 {
@@ -75,16 +75,10 @@ int main (int argc, char *argv[])
 	
 			printf("%s\n", buf);
 
-			if (!strncmp(buf, "GET /favicon.ico", 16))
+			if (!strncmp(buf, "GET /morty.jpeg", 15))
 			{
-				fdimg = open("favicon.ico", O_RDONLY);
-				sendfile(fd_client, fdimg, NULL, 4000);
-				close(fdimg);
-			}
-			else if (!strncmp(buf, "GET /favicon.ico", 16))
-			{
-				fdimg = open("favicon.ico", O_RDONLY);
-				sendfile(fd_client, fdimg, NULL, 4000);
+				fdimg = open("morty.jpeg", O_RDONLY);
+				sendfile(fd_client, fdimg, NULL, 8000);
 				close(fdimg);
 			}
 			else	
